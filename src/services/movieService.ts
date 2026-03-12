@@ -16,7 +16,7 @@ export const fetchMovies = async ({
 }: {
   query: string;
   page?: number;
-}): Promise<Movie[]> => {
+}): Promise<MovieResponse> => {
   const { data } = await axios.get<MovieResponse>(`${BASE_URL}/search/movie`, {
     params: {
         query,
@@ -28,5 +28,5 @@ export const fetchMovies = async ({
         Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
       },
   });
-  return data.results;
+  return data;
 };
